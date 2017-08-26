@@ -47,7 +47,24 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h2').textContent).toContain('Windstorm details!');
+    expect(compiled.querySelector('h2').textContent)
+      .toContain('Windstorm details!');
+  }));
+
+  it('should render hero id in a span.hero-id tag', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('span.hero-id').textContent)
+      .toContain('1');
+  }));
+
+  it('should render hero name in a span.hero-name tag', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('span.hero-name').textContent)
+      .toContain('Windstorm');
   }));
 
 });
