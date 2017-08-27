@@ -2,12 +2,16 @@ import { TestBed, async } from '@angular/core/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 
 import { AppComponent } from './app.component'
+import { FormsModule } from '@angular/forms'
+import { tick } from "@angular/core/testing"
+import { fakeAsync } from "@angular/core/testing"
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        FormsModule
       ],
       declarations: [
         AppComponent
@@ -59,12 +63,16 @@ describe('AppComponent', () => {
       .toContain('1')
   }))
 
-  it('should render hero name in a span.hero-name tag', async(() => {
+  it('should render hero name in a input.hero-name tag', fakeAsync(() => {
     const fixture = TestBed.createComponent(AppComponent)
     fixture.detectChanges()
     const compiled = fixture.debugElement.nativeElement
-    expect(compiled.querySelector('span.hero-name').textContent)
-      .toContain('Windstorm')
+    tick()
+    expect(
+      compiled
+        .querySelector('input.hero-name')
+        .value
+    ).toBe('Windstorm')
   }))
 
 })
