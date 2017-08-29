@@ -60,4 +60,10 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('ul>li:first-child').textContent.trim())
       .toBe('11 Mr. Nice')
   }))
+
+  it('should render 11 Mr. Nice in ul>li:last-child', async(() => {
+    expect(compiled.querySelector('ul>li:last-child').textContent.trim())
+      .toBe('20 Tornado')
+  }))
+
 })

@@ -25,9 +25,7 @@ describe('AppComponent', () => {
     fixture.detectChanges()
 
     app = fixture.debugElement.componentInstance
-
     compiled = fixture.debugElement.nativeElement
-    fixture.detectChanges()
   }))
 
   it(`should have a selected hero after onSelect(hero)`, async(() => {
@@ -44,6 +42,4 @@ describe('AppComponent', () => {
     expect(app.onSelect)
       .toHaveBeenCalledWith(selectedHero)
   }))
-
-
 })

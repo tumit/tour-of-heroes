@@ -54,5 +54,4 @@ describe('AppComponent', () => {
         .trim()
     ).toBe('12 Narco')
   }))
-
 })
