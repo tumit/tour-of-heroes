@@ -8,7 +8,6 @@ describe('AppComponent', () => {
 
   let fixture: any
   let compiled: any
-  let app: AppComponent
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -24,19 +23,10 @@ describe('AppComponent', () => {
     fixture = TestBed.createComponent(AppComponent)
     fixture.detectChanges()
 
-    app = fixture.debugElement.componentInstance
-
     compiled = fixture.debugElement.nativeElement
     compiled.querySelector('ul>li:nth-child(2)').click()
+
     fixture.detectChanges()
-
-  }))
-
-  it(`should have a selected hero after onSelect(hero)`, async(() => {
-    expect(app.selectedHero).toEqual({
-      id: 12,
-      name: 'Narco'
-    })
   }))
 
   it('should render hero details in a h2.selected-hero-details', async(() => {
@@ -64,4 +54,5 @@ describe('AppComponent', () => {
         .trim()
     ).toBe('12 Narco')
   }))
+
 })
