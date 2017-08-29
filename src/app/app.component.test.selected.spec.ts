@@ -1,20 +1,14 @@
-import { analyzeNgModules } from '@angular/compiler'
-import { TestBed, async } from '@angular/core/testing'
+import { async, TestBed } from '@angular/core/testing'
+import { FormsModule } from '@angular/forms'
 import { RouterTestingModule } from '@angular/router/testing'
 
 import { AppComponent, Hero } from './app.component'
-import { FormsModule } from '@angular/forms'
-import { tick } from '@angular/core/testing'
-import { fakeAsync } from '@angular/core/testing'
 
 describe('AppComponent', () => {
 
   let fixture: any
   let compiled: any
   let app: AppComponent
-  const selectedHero: Hero = {
-    id: 1, name: 'Windstorm'
-  }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,39 +22,46 @@ describe('AppComponent', () => {
     }).compileComponents()
 
     fixture = TestBed.createComponent(AppComponent)
-
-    compiled = fixture.debugElement.nativeElement
+    fixture.detectChanges()
 
     app = fixture.debugElement.componentInstance
-    app.onSelect(selectedHero)
 
+    compiled = fixture.debugElement.nativeElement
+    compiled.querySelector('ul>li:nth-child(2)').click()
     fixture.detectChanges()
+
   }))
 
   it(`should have a selected hero after onSelect(hero)`, async(() => {
     expect(app.selectedHero).toEqual({
-      id: 1,
-      name: 'Windstorm'
+      id: 12,
+      name: 'Narco'
     })
   }))
 
-  it('should render hero details in a h2.selected-hero-details', fakeAsync(() => {
-    tick()
+  it('should render hero details in a h2.selected-hero-details', async(() => {
     expect(compiled.querySelector('h2.selected-hero-details').textContent)
-      .toContain('Windstorm details!')
+      .toContain('Narco details!')
   }))
 
-  it('should render hero id in a span.selected-hero-id', fakeAsync(() => {
-    tick()
+  it('should render hero id in a span.selected-hero-id', async(() => {
     expect(
       compiled.querySelector('span.selected-hero-id').textContent
-    ).toContain('1')
+    ).toContain('12')
   }))
 
-  it('should render hero name in a input.selected-hero-name', fakeAsync(() => {
-    tick()
+  it('should render hero name in a input.selected-hero-name', async(() => {
     expect(
       compiled.querySelector('input.selected-hero-name').value
-    ).toBe('Windstorm')
+    ).toBe('Narco')
+  }))
+
+  it('should make selected on 12 Narco after click', async(() => {
+    expect(
+      compiled
+        .querySelector('ul>li.selected')
+        .textContent
+        .trim()
+    ).toBe('12 Narco')
   }))
 })

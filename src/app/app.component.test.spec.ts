@@ -25,11 +25,11 @@ describe('AppComponent', () => {
     }).compileComponents()
 
     fixture = TestBed.createComponent(AppComponent)
-
-    compiled = fixture.debugElement.nativeElement
+    fixture.detectChanges()
 
     app = fixture.debugElement.componentInstance
 
+    compiled = fixture.debugElement.nativeElement
     fixture.detectChanges()
   }))
 
@@ -42,8 +42,8 @@ describe('AppComponent', () => {
   }))
 
   it('should render title in a h1 tag', async(() => {
-    fixture.detectChanges()
-    expect(compiled.querySelector('h1').textContent).toContain('Tour of Heroes')
+    expect(compiled.querySelector('h1').textContent)
+      .toContain('Tour of Heroes')
   }))
 
   it(`should render 'My heroes' in a h2 tag`, async(() => {
@@ -51,17 +51,13 @@ describe('AppComponent', () => {
       .toContain('My Heroes')
   }))
 
-  it('should render heroes in span.badge', fakeAsync(() => {
-    tick()
-    expect(
-      compiled.querySelectorAll('span.badge').length
-    ).toBe(10)
+  it('should render heroes in span.badge', async(() => {
+    expect(compiled.querySelectorAll('span.badge').length)
+      .toBe(10)
   }))
 
-  it('should render heroes in ul>li:first-child', fakeAsync(() => {
-    tick()
-    expect(
-      compiled.querySelector('ul>li:first-child').textContent.trim()
-    ).toBe('11 Mr. Nice')
+  it('should render 11 Mr. Nice in ul>li:first-child', async(() => {
+    expect(compiled.querySelector('ul>li:first-child').textContent.trim())
+      .toBe('11 Mr. Nice')
   }))
 })
