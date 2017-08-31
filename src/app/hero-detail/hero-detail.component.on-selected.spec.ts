@@ -7,7 +7,7 @@ describe('HeroDetailComponent', () => {
   let component: HeroDetailComponent
   let fixture: ComponentFixture<HeroDetailComponent>
   let compiled: any
-  let selectedHero = { id: 12, name: 'Narco' }
+  const selectedHero = { id: 12, name: 'Narco' }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -41,7 +41,7 @@ describe('HeroDetailComponent', () => {
 
   it('should render placeholder', async(() => {
     expect(compiled.querySelector('input.hero-name').placeholder)
-      .toBe('hero name')
+      .toBe('name')
   }))
 
   it('should render hero.name in a input.hero-name', async(() => {
