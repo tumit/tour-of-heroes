@@ -1,11 +1,10 @@
-import { analyzeNgModules } from '@angular/compiler'
-import { TestBed, async } from '@angular/core/testing'
+import { async, TestBed } from '@angular/core/testing'
+import { FormsModule } from '@angular/forms'
+import { By } from '@angular/platform-browser'
 import { RouterTestingModule } from '@angular/router/testing'
 
-import { AppComponent, Hero } from './app.component'
-import { FormsModule } from '@angular/forms'
-import { tick } from '@angular/core/testing'
-import { fakeAsync } from '@angular/core/testing'
+import { AppComponent } from './app.component'
+import { HeroDetailComponent } from './hero-detail/hero-detail.component'
 
 describe('AppComponent', () => {
 
@@ -20,16 +19,15 @@ describe('AppComponent', () => {
         FormsModule
       ],
       declarations: [
-        AppComponent
-      ],
+        AppComponent,
+        HeroDetailComponent
+      ]
     }).compileComponents()
 
     fixture = TestBed.createComponent(AppComponent)
-    fixture.detectChanges()
-
     app = fixture.debugElement.componentInstance
-
     compiled = fixture.debugElement.nativeElement
+
     fixture.detectChanges()
   }))
 
@@ -66,4 +64,19 @@ describe('AppComponent', () => {
       .toBe('20 Tornado')
   }))
 
+  it('should bind selectedHero to HeroDetailComponent', async(() => {
+
+    // arrange & act
+    app.selectedHero = { id: 12, name: 'Narco' }
+    fixture.detectChanges()
+
+    // assert
+    expect(
+      fixture
+        .debugElement
+        .query(By.css('app-hero-detail'))
+        .componentInstance.hero
+    ).toBe(app.selectedHero)
+
+  }))
 })
