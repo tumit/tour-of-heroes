@@ -39,6 +39,11 @@ describe('HeroDetailComponent', () => {
       .toContain(selectedHero.id)
   }))
 
+  it('should render placeholder', async(() => {
+    expect(compiled.querySelector('input.hero-name').placeholder)
+      .toBe('hero name')
+  }))
+
   it('should render hero.name in a input.hero-name', async(() => {
     fixture.whenStable().then(() => {
       expect(compiled.querySelector('input.hero-name').value)
