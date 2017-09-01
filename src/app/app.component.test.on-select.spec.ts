@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing'
 import { AppComponent } from './app.component'
 import { HeroDetailComponent } from './hero-detail/hero-detail.component'
 import { Hero } from './model/hero'
+import { HeroService } from './service/hero.service'
 
 describe('AppComponent', () => {
 
@@ -22,6 +23,9 @@ describe('AppComponent', () => {
         AppComponent,
         HeroDetailComponent
       ],
+      providers: [
+        HeroService
+      ]
     }).compileComponents()
 
     fixture = TestBed.createComponent(AppComponent)

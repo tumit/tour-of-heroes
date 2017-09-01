@@ -1,3 +1,4 @@
+import { HeroService } from './service/hero.service'
 import { async, TestBed } from '@angular/core/testing'
 import { ComponentFixture } from '@angular/core/testing/src/testing'
 import { FormsModule } from '@angular/forms'
@@ -21,6 +22,9 @@ describe('AppComponent', () => {
         AppComponent,
         HeroDetailComponent
       ],
+      providers: [
+        HeroService
+      ]
     }).compileComponents()
 
     fixture = TestBed.createComponent(AppComponent)
