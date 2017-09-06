@@ -22,16 +22,21 @@ describe('HeroDetailComponent', () => {
     fixture = TestBed.createComponent(HeroDetailComponent)
     component = fixture.componentInstance
     compiled = fixture.debugElement.nativeElement
-
     fixture.detectChanges()
   })
 
+  // ************************
+  // **** class testing
+  // ************************
   it('should be created', () => {
     expect(component).toBeTruthy()
   })
 
-  it(`should not display when hero is not select`, async(() => {
-    expect(compiled.querySelector('div.hero-panel'))
-      .toBeNull()
+  // ************************
+  // **** template testing
+  // ************************
+  it('should hide hero-panel with not select hero', async(() => {
+    expect(compiled.querySelector('div.hero-panel')).toBeNull()
   }))
+
 })

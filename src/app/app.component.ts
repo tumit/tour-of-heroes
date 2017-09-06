@@ -10,21 +10,10 @@ import { HeroService } from './service/hero.service'
 })
 export class AppComponent implements OnInit {
   title = 'Tour of Heroes'
-  selectedHero: Hero
-  heroes: Hero[]
 
   constructor(
-    private heroService: HeroService
   ) {}
 
   ngOnInit(): void {
-    this.heroService
-          .getHeroes()
-          .subscribe(heroes => this.heroes = heroes)
   }
-
-  onSelect(hero: Hero) {
-    this.selectedHero = hero
-  }
-
 }
