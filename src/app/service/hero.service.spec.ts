@@ -24,8 +24,7 @@ describe('HeroService', () => {
         .getHeroes()
         .subscribe(heroes => {
           expect(heroes).toBe(expectedHero)
-      })
+        })
     })
   )
-
 })
