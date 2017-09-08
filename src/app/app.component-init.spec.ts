@@ -1,5 +1,5 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core'
-import { async, TestBed } from '@angular/core/testing'
+import { async, TestBed, ComponentFixture } from '@angular/core/testing'
 import { FormsModule } from '@angular/forms'
 import { By } from '@angular/platform-browser'
 import { RouterTestingModule } from '@angular/router/testing'
@@ -10,7 +10,7 @@ import { HeroService } from './service/hero.service'
 
 describe('AppComponent', () => {
 
-  let fixture: any
+  let fixture: ComponentFixture<AppComponent>
   let compiled: any
   let app: AppComponent
 
@@ -37,8 +37,20 @@ describe('AppComponent', () => {
     fixture.detectChanges()
   }))
 
+  // ************************
+  // **** class testings
+  // ************************
   it('should create the app', async(() => {
     expect(app).toBeTruthy()
+  }))
+
+  // ************************
+  // **** template testing
+  // ************************
+  it('should render nav > a', async(() => {
+    expect(
+      compiled.querySelectorAll('nav > a').length
+    ).toBe(2)
   }))
 
   it('should have as title "Tour of Heroes"', async(() => {
@@ -50,12 +62,26 @@ describe('AppComponent', () => {
       .toContain('Tour of Heroes')
   }))
 
+  it('should render Dashboard link to /dashboard', async(() => {
+    const elementId = '#router-link-dashboard'
+    const element = fixture.debugElement.query(By.css(elementId))
+    expect(element.attributes['routerLink']).toEqual('/dashboard')
+    expect(element.nativeElement.textContent).toEqual('Dashboard')
+  }))
+
+  it('should render Heroes link to /heroes', async(() => {
+    const elementId = '#router-link-heroes'
+    const element = fixture.debugElement.query(By.css(elementId))
+    expect(element.attributes['routerLink']).toEqual('/heroes')
+    expect(element.nativeElement.textContent).toEqual('Heroes')
+  }))
+
   it('should render app-heroes tag', async(() => {
     expect(
       fixture
         .debugElement
-        .query(By.css('app-heroes'))
-        .componentInstance
+        .query(By.css('router-outlet'))
     ).toBeTruthy()
+
   }))
 })

@@ -1,10 +1,22 @@
 import { NgModule } from '@angular/core'
-import { Routes, RouterModule } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router'
 
-const routes: Routes = [
+import { DashboardComponent } from './dashboard/dashboard.component'
+import { HeroesComponent } from './heroes/heroes.component'
+
+export const routes: Routes = [
   {
     path: '',
-    children: []
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+  {
+    path: 'heroes',
+    component: HeroesComponent
   }
 ]
 
