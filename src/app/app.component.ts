@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core';
 
-import { Hero } from './model/hero'
-import { HeroService } from './service/hero.service'
+import { Hero } from './model/hero';
+import { HeroService } from './service/hero.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { HeroService } from './service/hero.service'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Tour of Heroes'
+  title = 'Tour of Heroes';
 
   constructor(
   ) {}

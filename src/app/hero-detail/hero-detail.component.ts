@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core'
-import { Hero } from '../model/hero'
+import { Component, Input, OnInit } from '@angular/core';
+import { Hero } from '../model/hero';
 
 @Component({
   selector: 'app-hero-detail',
@@ -8,7 +8,7 @@ import { Hero } from '../model/hero'
 })
 export class HeroDetailComponent implements OnInit {
 
-  @Input() hero: Hero
+  @Input() hero: Hero;
 
   constructor() { }
 

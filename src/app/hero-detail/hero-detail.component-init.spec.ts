@@ -1,12 +1,12 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing'
-import { FormsModule } from '@angular/forms'
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
-import { HeroDetailComponent } from './hero-detail.component'
+import { HeroDetailComponent } from './hero-detail.component';
 
 describe('HeroDetailComponent', () => {
-  let component: HeroDetailComponent
-  let fixture: ComponentFixture<HeroDetailComponent>
-  let compiled: any
+  let component: HeroDetailComponent;
+  let fixture: ComponentFixture<HeroDetailComponent>;
+  let compiled: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -15,28 +15,28 @@ describe('HeroDetailComponent', () => {
       ],
       declarations: [ HeroDetailComponent ]
     })
-    .compileComponents()
-  }))
+    .compileComponents();
+  }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeroDetailComponent)
-    component = fixture.componentInstance
-    compiled = fixture.debugElement.nativeElement
-    fixture.detectChanges()
-  })
+    fixture = TestBed.createComponent(HeroDetailComponent);
+    component = fixture.componentInstance;
+    compiled = fixture.debugElement.nativeElement;
+    fixture.detectChanges();
+  });
 
   // ************************
   // **** class testing
   // ************************
   it('should be created', () => {
-    expect(component).toBeTruthy()
-  })
+    expect(component).toBeTruthy();
+  });
 
   // ************************
   // **** template testing
   // ************************
   it('should hide hero-panel with not select hero', async(() => {
-    expect(compiled.querySelector('div.hero-panel')).toBeNull()
-  }))
+    expect(compiled.querySelector('div.hero-panel')).toBeNull();
+  }));
 
-})
+});
