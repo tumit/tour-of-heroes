@@ -48,13 +48,13 @@ describe('AppComponent', () => {
   // **** template testing
   // ************************
   it('should render nav > a', async(() => {
-    expect(
-      compiled.querySelectorAll('nav > a').length
-    ).toBe(2);
+    expect(compiled.querySelectorAll('nav > a').length)
+      .toBe(2);
   }));
 
   it('should have as title "Tour of Heroes"', async(() => {
-    expect(app.title).toEqual('Tour of Heroes');
+    expect(app.title)
+      .toEqual('Tour of Heroes');
   }));
 
   it('should render title in a h1 tag', async(() => {
@@ -77,11 +77,7 @@ describe('AppComponent', () => {
   }));
 
   it('should render app-heroes tag', async(() => {
-    expect(
-      fixture
-        .debugElement
-        .query(By.css('router-outlet'))
-    ).toBeTruthy();
-
+    expect(fixture.debugElement.query(By.css('router-outlet')))
+      .toBeTruthy();
   }));
 });

@@ -12,4 +12,9 @@ export class HeroService {
   getHeroes(): Observable<Hero[]> {
     return Observable.of(HEROES);
   }
+
+  getHero(id: number): Observable<Hero> {
+    return this.getHeroes()
+                .map(heroes => heroes.filter(h => h.id === id)[0]);
+  }
 }

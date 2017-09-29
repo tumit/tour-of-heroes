@@ -49,7 +49,7 @@ describe('HeroesComponent', () => {
     ).toContain('My Heroes');
   }));
 
-  it('should init heroes form serive', async(() => {
+  it('should init heroes form service', async(() => {
     component.ngOnInit();
     expect(component.heroes).toBe(HEROES);
   }));

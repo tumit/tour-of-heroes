@@ -24,7 +24,8 @@ describe('App Routing Module', () => {
       ],
       declarations: [
         DashboardComponent,
-        HeroesComponent
+        HeroesComponent,
+        HeroDetailComponent
       ]
     });
     location = TestBed.get(Location);
@@ -43,9 +44,15 @@ describe('App Routing Module', () => {
     });
   }));
 
-  it('should redirect to /dashboard with "/heroes"', async(() => {
+  it('should redirect to /heroes with "/heroes"', async(() => {
     router.navigate(['heroes']).then(() => {
       expect(location.path()).toBe('/heroes');
+    });
+  }));
+
+  it('should redirect to /detail/1 with "/detail/1"', async(() => {
+    router.navigate(['detail/1']).then(() => {
+      expect(location.path()).toBe('/detail/1');
     });
   }));
 

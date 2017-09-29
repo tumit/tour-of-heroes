@@ -1,9 +1,15 @@
+import { Observable } from 'rxjs/Rx';
+import { ActivatedRoute, Params } from '@angular/router';
+import { HeroService } from '../service/hero.service';
+
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { HeroDetailComponent } from './hero-detail.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('HeroDetailComponent', () => {
+describe('HeroDetailComponent on select', () => {
   let component: HeroDetailComponent;
   let fixture: ComponentFixture<HeroDetailComponent>;
   let compiled: any;
@@ -12,9 +18,17 @@ describe('HeroDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        RouterTestingModule,
         FormsModule
       ],
-      declarations: [HeroDetailComponent]
+      declarations: [ HeroDetailComponent ],
+      providers: [
+        HeroService,
+        {
+          provide: ActivatedRoute,
+          useValue: { paramMap: Observable.of({get: () => 12}) }
+        }
+      ]
     })
       .compileComponents();
   }));
@@ -29,9 +43,8 @@ describe('HeroDetailComponent', () => {
   });
 
   it('should render hero details in a h2.hero-details', async(() => {
-    expect(
-      compiled.querySelector('h2.hero-details').textContent
-    ).toContain(selectedHero.name);
+    expect(compiled.querySelector('h2.hero-details').textContent)
+      .toContain(selectedHero.name);
   }));
 
   it('should render hero id in a span.hero-id', async(() => {

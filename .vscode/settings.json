@@ -1,7 +1,0 @@
-{
-  "tsimporter.emitSemicolon": false,
-  "typescriptHero.resolver.insertSemicolons": false,
-  "javascript.format.insertSpaceAfterSemicolonInForStatements": false,
-  "typescript.format.insertSpaceAfterSemicolonInForStatements": false,
-  "editor.acceptSuggestionOnCommitCharacter": false
-}

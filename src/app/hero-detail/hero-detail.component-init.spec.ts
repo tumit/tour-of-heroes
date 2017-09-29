@@ -2,8 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { HeroDetailComponent } from './hero-detail.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HeroService } from '../service/hero.service';
 
-describe('HeroDetailComponent', () => {
+describe('HeroDetailComponent init', () => {
   let component: HeroDetailComponent;
   let fixture: ComponentFixture<HeroDetailComponent>;
   let compiled: any;
@@ -11,9 +13,11 @@ describe('HeroDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        RouterTestingModule,
         FormsModule
       ],
-      declarations: [ HeroDetailComponent ]
+      declarations: [ HeroDetailComponent ],
+      providers: [ HeroService ]
     })
     .compileComponents();
   }));
