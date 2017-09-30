@@ -49,4 +49,12 @@ describe('HeroesComponent', () => {
     // assert
     expect(component.onSelect).toHaveBeenCalledWith(selectedHero);
   }));
+
+  it('should render MR. NICE is my hero when select Mr. Nice', async(() => {
+    component.selectedHero = selectedHero;
+    fixture.detectChanges();
+    expect(compiled.querySelector('h2.is-my-hero').textContent).toBe('NARCO is my hero');
+    expect(compiled.querySelector('button.go-to-detail').textContent).toBe('View Details');
+  }));
+
 });

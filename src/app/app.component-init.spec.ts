@@ -57,11 +57,6 @@ describe('AppComponent', () => {
       .toEqual('Tour of Heroes');
   }));
 
-  it('should render title in a h1 tag', async(() => {
-    expect(compiled.querySelector('h1').textContent)
-      .toContain('Tour of Heroes');
-  }));
-
   it('should render Dashboard link to /dashboard', async(() => {
     const elementId = '#router-link-dashboard';
     const element = fixture.debugElement.query(By.css(elementId));

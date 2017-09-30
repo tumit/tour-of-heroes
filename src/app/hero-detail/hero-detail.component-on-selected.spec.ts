@@ -60,12 +60,8 @@ describe('HeroDetailComponent on select', () => {
   }));
 
   it('should render hero.name in a input.hero-name', async(() => {
-    fixture
-      .whenStable()
-      .then(() => {
-        expect(
-          compiled.querySelector('input.hero-name').value
-        ).toBe(selectedHero.name);
-      });
+    fixture.whenStable().then(() => {
+      expect(compiled.querySelector('input.hero-name').value).toBe(selectedHero.name);
+    });
   }));
 });

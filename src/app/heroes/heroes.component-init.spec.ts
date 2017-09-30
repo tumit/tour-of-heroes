@@ -83,12 +83,4 @@ describe('HeroesComponent', () => {
     ).toBe('20 Tornado');
   }));
 
-  it('should bind selectedHero to HeroDetailComponent.hero', async(() => {
-    expect(
-      fixture
-        .debugElement
-        .query(By.css('app-hero-detail'))
-        .componentInstance.hero
-    ).toBe(component.selectedHero);
-  }));
 });
