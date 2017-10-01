@@ -68,6 +68,7 @@ describe('AppComponent', () => {
     const elementId = '#router-link-heroes';
     const element = fixture.debugElement.query(By.css(elementId));
     expect(element.attributes['routerLink']).toEqual('/heroes');
+    expect(element.attributes['routerLinkActive']).toEqual('active');
     expect(element.nativeElement.textContent).toEqual('Heroes');
   }));
 
