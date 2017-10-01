@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
@@ -5,10 +6,12 @@ import { HeroDetailComponent } from './hero-detail.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HeroService } from '../service/hero.service';
 
+
 describe('HeroDetailComponent init', () => {
   let component: HeroDetailComponent;
   let fixture: ComponentFixture<HeroDetailComponent>;
   let compiled: any;
+  let location: Location;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -17,9 +20,12 @@ describe('HeroDetailComponent init', () => {
         FormsModule
       ],
       declarations: [ HeroDetailComponent ],
-      providers: [ HeroService ]
+      providers: [ HeroService, Location ]
     })
     .compileComponents();
+
+    location = TestBed.get(Location);
+
   }));
 
   beforeEach(() => {
@@ -35,6 +41,20 @@ describe('HeroDetailComponent init', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call locatation.back() when call goBack()', async(() => {
+
+    spyOn(location, 'back');
+
+    component.goBack();
+
+    fixture.whenStable().then(() => {
+      expect(location.back).toHaveBeenCalled();
+    });
+
+
+  }));
+
 
   // ************************
   // **** template testing

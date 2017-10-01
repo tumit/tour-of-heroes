@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
@@ -12,6 +13,7 @@ describe('HeroesComponent', () => {
   let component: HeroesComponent;
   let fixture: ComponentFixture<HeroesComponent>;
   let compiled: any;
+  let route: Router;
 
   const selectedHero = HEROES[1];
 
@@ -27,6 +29,9 @@ describe('HeroesComponent', () => {
       ]
     })
     .compileComponents();
+
+    route = TestBed.get(Router);
+
   }));
 
   beforeEach(() => {
@@ -61,6 +66,20 @@ describe('HeroesComponent', () => {
     // assert
     expect(component.selectedHero).toBe(selectedHero);
   }));
+
+  it('should route to "detail/id"', async(() => {
+
+    spyOn(route, 'navigate');
+
+    component.onSelect(selectedHero);
+    component.gotoDetail();
+
+    fixture.whenStable().then(() => {
+      expect(route.navigate).toHaveBeenCalledWith(['/detail', selectedHero.id]);
+    });
+
+  }));
+
 
   // ************************
   // **** template testing
